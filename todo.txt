@@ -1,0 +1,29 @@
+-> you may load the project into eclipse (import existing projects into workspace) or build it with ant
+
+manual todos:
+1) adapt solution/build.xml (for build-projects and each deployment)
+	a) in build-projects:
+		<ant antfile="../texts-service/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../texts-service-file/build.xml" target="${target}" inheritAll="false" />		
+		<ant antfile="../texts-service-opencrx/build.xml" target="${target}" inheritAll="false" />		
+	b) in any zipfile in assemble:
+		<zipfileset dir="../${java.build.platform}/texts-service/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+		<zipfileset dir="../${java.build.platform}/texts-service-file/lib/" includes="*.jar" prefix="WEB-INF/lib" />		
+2) adapt test-solution/build.xml (project.class.path):
+		<fileset dir="../${java.build.platform}/texts-service/lib/" includes="*.jar" />
+3) adapt buildpath in Eclipse (project test-solution)
+	or insert into test-solution/.classpath:
+		<classpathentry combineaccessrules="false" kind="src" path="/opentdc 1 ~ texts-service (jre-1.7)"/>
+4) create seed file in solution/src/war/[eachDeployment]/TextsService/seed.json (normally with empty content: [])
+5) adapt solution/src/war/[eachDeployment]/WEB-INF/web.xml
+	a) Context:
+		<context-param>
+			<param-name>TextsService.serviceProvider</param-name>
+			<param-value>org.opentdc.texts.file.FileServiceProvider</param-value>
+		</context-param>
+	b) CXFServlet / jaxrs.serviceClasses: 
+			org.opentdc.texts.TextsService
+6) add API_URL constant in services-generic ServiceUtil (same as API_URLs in testclients)
+		public static final String TEXTS_API_URL = "/api/text";
+7) check that everything is correct by running the test client
+8) enhance the Model class and adapt the implementations and testclients
