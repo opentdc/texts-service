@@ -41,6 +41,7 @@ public class TextModel {
 	private String id;		// sortable
 	private String title;	// mandatory
 	private String description;
+	private TextType textType; // mandatory, default
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
@@ -174,6 +175,20 @@ public class TextModel {
 		this.modifiedBy = modifiedBy;
 	}
 	
+	/**
+	 * @return the textType
+	 */
+	public TextType getTextType() {
+		return textType;
+	}
+
+	/**
+	 * @param textType the textType to set
+	 */
+	public void setTextType(TextType textType) {
+		this.textType = textType;
+	}
+
 	/******************************* Comparator *****************************/
 	/**
 	 * Comparator for comparing two rates based on their id.
