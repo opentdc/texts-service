@@ -38,8 +38,8 @@ import org.opentdc.service.exception.ValidationException;
 public interface ServiceProvider {
 	
 	public abstract List<SingleLangText> list(
-		String queryType,
 		String query,
+		String queryType,
 		int position,
 		int size
 	);
@@ -64,8 +64,8 @@ public interface ServiceProvider {
 	//**************************** localized text *************************************
 	public abstract List<LocalizedTextModel> listTexts(
 			String tid,
-			String queryType,
 			String query,
+			String queryType,
 			int position,
 			int size
 		);

@@ -82,12 +82,12 @@ public class TextsService extends GenericService<ServiceProvider> {
 	@Path("/")
 //	@ApiOperation(value = "Return a list of all texts", response = List<TextModel>.class)
 	public List<SingleLangText> list(
-		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
 		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
+		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
 		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") int position,
 		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") int size
 	) {
-		return sp.list(queryType, query, position, size);
+		return sp.list(query, queryType, position, size);
 	}
 
 	@POST
